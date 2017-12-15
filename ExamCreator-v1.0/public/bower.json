@@ -1,0 +1,14 @@
+{
+  "name": "public",
+  "authors": [
+    "Karan <virtual.karankhanna@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "dependencies": {
+    "angular": "^1.6.7",
+    "bootstrap": "^3.3.7"
+  }
+}

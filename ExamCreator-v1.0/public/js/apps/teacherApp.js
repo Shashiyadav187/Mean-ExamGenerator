@@ -1,0 +1,1 @@
+var teacherApp = angular.module("teacher",[]);

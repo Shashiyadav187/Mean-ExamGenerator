@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/teacherPage.css">
+    
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/apps/teacherApp.js"></script>
+    <script src="js/model/Question.js"></script>
+    <script src="js/factories/teacherFactory.js"></script>
+    <script src="js/controllers/teacherController.js"></script>
+    
+    
+
+    <title>Teacher</title>
+</head>
+<body ng-app="teacher" ng-controller="teacherCtrl">
+<div id="header">:: Question Entry ::</div>
+<div class="container">
+    <label class="quesNo">Question Number :</label><label class="quesNo" ng-init="quesNo=1">{{quesNo}}</label>
+    <label  class="new-line" for="ques">Enter the Question :</label><input type="text" class="new-line" ng-model="ques" id="ques">
+
+    <div class="options">
+    <label for="opt1">Option 1 :</label><input type="text" ng-model="opt1" id="opt1" class="opt">
+    <label for="opt2">Option 2 :</label><input type="text" ng-model="opt2" id="opt2" class="opt">
+    <label for="opt3">Option 3 :</label><input type="text" ng-model="opt3" id="opt3" class="opt">
+    <label for="opt4">Option 4 :</label><input type="text" ng-model="opt4" id="opt4" class="opt">
+   <!-- <label for="rightAns">Right Answer:</label><input type="text" id="rightAns">-->
+    </div>
+    <div id="right-and-marks">
+   <select class="selectpicker" ng-model="rightAns" ng-init="rightAns='Select the right answer'">
+        <option ng-if="opt1" value="{{opt1}}">{{opt1}}</option>
+        <option ng-if="opt2" value="{{opt2}}">{{opt2}}</option>
+        <option ng-if="opt3" value="{{opt3}}">{{opt3}}</option>
+        <option ng-if="opt4" value="{{opt4}}">{{opt4}}</option>
+        <option value="" disabled selected >Select the right answer</option>
+        
+       </select> 
+   <label for="marks" >Marks :</label><input class="number" type="number" ng-model="marks" min="1" id="marks">
+</div>
+<div id="buttons">
+   <button class="btn btn-primary" ng-click="add()" ng-disabled="!addMode || editMode">ADD</button>
+    <button class="btn btn-primary" ng-click="update()" ng-disabled="!editMode">UPDATE</button>
+    <button class="btn btn-primary" ng-click="sort()" ng-disabled="editMode">SORT BY MARKS</button>
+    <button class="btn btn-warning" ng-click="saveLocal()" ng-disabled="editMode || selectedDeleteMode">SAVE LOCAL</button>
+    <button class="btn btn-warning" ng-click="fetchLocal()" ng-disabled="editMode || selectedDeleteMode">FETCH LOCAL</button>
+    <button class="btn btn-danger" ng-click="delete()" ng-disabled="editMode || !selectedDeleteMode">DELETE SELECTED</button>
+    <button class="btn btn-danger" ng-click="reset()" ng-disabled="editMode">RESET</button>
+    <button class="btn btn-danger" ng-click="deleteAll()" ng-disabled="editMode">DELETE ALL</button>
+    <button class="new-line btn btn-success" id="submit" ng-click="submit()" ng-disabled="editMode || selectedDeleteMode">SUBMIT QUESTIONS</button>
+</div>
+
+    <hr>
+    <hr>
+ <div ng-if="allQuestions">
+<table class="table">
+    <thead>
+            <th>Question Number</th>
+            <th>Question</th>
+            <th>Option 1</th>
+            <th>Option 2</th>
+            <th>Option 3</th>
+            <th>Option 4</th>
+            <th>Marks</th>
+        
+    </thead>
+    <tbody>
+        <tr ng-repeat="question in allQuestions" id="{{question.quesNo}}">
+            <td>{{question.quesNo}}</td>
+            <td>{{question.ques}}</td>
+            <td ng-class="question.option1==question.rightAnswer?'rightAns':''">{{question.option1}}</td>
+            <td ng-class="question.option2==question.rightAnswer?'rightAns':''">{{question.option2}}</td>
+            <td ng-class="question.option3==question.rightAnswer?'rightAns':''">{{question.option3}}</td>
+            <td ng-class="question.option4==question.rightAnswer?'rightAns':''">{{question.option4}}</td>
+            <td>{{question.marks}}</td>
+            <td>
+                <img src='images/edit.png' ng-click="editClick($event)"></img>
+                <img src='images/delete.png' ng-click="deleteClick($event)"></img>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+</div>
+</body>
+</html>

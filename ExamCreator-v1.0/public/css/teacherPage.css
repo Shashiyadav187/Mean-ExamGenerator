@@ -1,0 +1,63 @@
+*{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+.selectedRow{
+background-color: crimson;
+}
+.rightAns
+{
+background-color: greenyellow;
+}
+.container{
+    margin-top: 25px;
+}
+#header{
+    width: 100%;
+    height: 70;
+    font-size: 50px;
+    letter-spacing: 2px;
+    word-spacing: 8px;
+    color: whitesmoke;
+    padding-left: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    background-color: darkslategray;
+    
+}
+.new-line{
+    display: block;
+}
+.quesNo{
+        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        font-size: 20px;
+        margin: 10px;    
+      
+}
+#ques{
+    width: 100%;
+}
+.opt{
+    margin-right: 15px;
+    width: 15%;
+}
+.options{
+    margin:15px;
+    display: flex;
+}
+#right-and-marks{
+text-align: center;
+}
+#buttons{
+    margin-top: 20px;
+    text-align: center;
+}
+button{
+    margin-top: 8px;
+    min-width: 100px;
+}
+#submit{
+
+    margin: 10px auto;
+    width: 50%;
+    height: 40px;
+}

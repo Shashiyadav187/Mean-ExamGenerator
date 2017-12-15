@@ -1,0 +1,47 @@
+*{
+    font-family: 'Lato', sans-serif;
+}
+.correct
+{
+background-color:greenyellow;
+}
+.incorrect
+{
+background-color:crimson;
+}
+
+#timer{
+    float: right;
+    font-size: 30px;
+    font-family: 'Archivo Black', cursive;
+    color: rgb(189, 22, 22);
+}
+#test{
+    font-size: 15px;
+    
+    padding: 25px;
+  border-radius: 30px;
+    background-color: lightgrey;
+margin: 25px auto;
+width: 70%;   
+
+}
+ul{
+    margin-top: 40px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom: 25px;
+}
+#action-buttons{
+    text-align: center;
+    width: 100%;
+}
+
+#prev,#next{
+    width: 20%;
+    height: 30px;
+}
+#submit{
+width: 50%;
+height: 45px;
+}

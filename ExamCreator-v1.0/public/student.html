@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/studentPage.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Archivo+Black" rel="stylesheet">
+    
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="js/configuration/jsonLinks.js"></script>
+    <script src="js/apps/studentApp.js"></script>
+    <script src="js/factories/studentFactory.js"></script>
+    <script src="js/controllers/studentController.js"></script>
+    <title>Student Page</title>
+    
+</head>
+<body ng-app="student" ng-controller="studentCtrl">
+
+<div id="main" class="container">
+        <label ng-bind="userId" ng-init="userId='The STUDENT ID will be shown here..'"></label>
+        <div id="timer" ng-hide="result">Time Left :: {{timer}}</div>
+        
+    <div id="test" ng-hide="result">
+        
+    
+            <div>
+                <label for="#">QUESTION NUMBER :::{{currQues.quesNo}}</label><br>
+                
+                <label for="#">QUESTION ::::{{currQues.ques}}</label><br>
+
+                <label for="#">MARKS :::{{currQues.marks}}</label><br>
+                
+                
+                <ul class="list-group">
+
+                    <li class="list-group-item"><input type="radio" name='choice' ng-model="myChoice" ng-value="currQues.option1">{{currQues.option1}}</li>
+                    <li class="list-group-item"><input type="radio" name='choice' ng-model="myChoice" ng-value="currQues.option2">{{currQues.option2}}</li>
+                    <li class="list-group-item"><input type="radio" name='choice' ng-model="myChoice" ng-value="currQues.option3">{{currQues.option3}}</li>
+                    <li class="list-group-item"><input type="radio" name='choice' ng-model="myChoice" ng-value="currQues.option4">{{currQues.option4}}</li>
+                </ul>
+                
+                <label for="#">{{currQues.rightAnswer}}</label>
+                
+            </div>
+            <div id="action-buttons">
+                <button class="btn btn-danger" id="prev" ng-click="prevQues()">PREVIOUS</button>
+                <button class="btn btn-success" id="submit" ng-click="submit()">SUBMIT</button>
+                <button class="btn btn-danger" id="next" ng-click="nextQues()">NEXT</button>
+            </div>
+        </div>
+        
+    <div id="result" ng-if="result">
+
+       <h2>Result received!!!</h2>
+       <h3>YOur Score is : {{score}}</h3>
+       <table class="table">
+            <thead>
+                    <th>Question Number</th>
+                    <th>Question</th>
+                    <th>Option 1</th>
+                    <th>Option 2</th>
+                    <th>Option 3</th>
+                    <th>Option 4</th>
+                    <th>Marks</th>
+                
+            </thead>
+            <tbody>
+                <tr ng-repeat="answer in result" id="{{answer.quesNo}}" >
+                    <td>{{answer.quesNo}}</td>
+                    <td>{{answer.ques}}</td>
+                    <td ng-class="answer.markedOption==answer.option1?(answer.status?'correct':'incorrect'):''">{{answer.option1}}</td>
+                    <td ng-class="answer.markedOption==answer.option2?(answer.status?'correct':'incorrect'):''">{{answer.option2}}</td>
+                    <td ng-class="answer.markedOption==answer.option3?(answer.status?'correct':'incorrect'):''">{{answer.option3}}</td>
+                    <td ng-class="answer.markedOption==answer.option4?(answer.status?'correct':'incorrect'):''">{{answer.option4}}</td>
+                    <td>{{answer.marks}}</td>
+                    
+                </tr>
+            </tbody>
+        </table>
+        
+   </div>
+</div>
+</body>
+</html>
